@@ -1,21 +1,7 @@
-from graphviz import Digraph
-
-print("Gráfico")
-# Crear un nuevo grafo dirigido
-grafo = Digraph()
-
-# Agregar nodos al grafo
-grafo.node('A')
-grafo.node('B')
-grafo.node('C')
-grafo.node('DE')
-
-# Agregar aristas al grafo
-grafo.edge('A', 'B')
-grafo.edge('B', 'C')
-grafo.edge('C', 'A')
-
-# Guardar el gráfico como PNG
-grafo.render('graph', format='png', view=False)
-
-print("Gráfico generado como 'graph.png'")
+# diagram.py
+from diagrams import Diagram
+from diagrams.aws.compute import EC2
+from diagrams.aws.database import RDS
+from diagrams.aws.network import ELB
+with Diagram("web service", show=False):
+    ELB("lb") >> EC2("web") >> RDS("userdb")
